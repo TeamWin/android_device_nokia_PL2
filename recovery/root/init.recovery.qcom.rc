@@ -22,11 +22,9 @@ on init
     mkdir /acct/uid
 
     start hwservicemanager
-    start patchlevel
 
 on boot
     setprop sys.usb.config adb
-    wait /sbin/patchlevel_set
 
 on property:crypto.ready=1
     start sbin_qseecomd
@@ -91,11 +89,4 @@ service keystore_auth /sbin/keystore_auth
     oneshot
     user system
     group root
-    seclabel u:r:recovery:s0
-
-service patchlevel /sbin/patchlevel.sh
-    user root
-    group root
-    disabled
-    oneshot
     seclabel u:r:recovery:s0
