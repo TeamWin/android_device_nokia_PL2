@@ -21,14 +21,10 @@ on init
     mount cgroup none /acct cpuacct
     mkdir /acct/uid
 
-    export LD_CONFIG_FILE /etc/ld.config.txt
-
     start hwservicemanager
-    start patchlevel
 
 on boot
     setprop sys.usb.config adb
-    wait /sbin/patchlevel_set
 
 on property:crypto.ready=1
     start sbin_qseecomd
@@ -45,10 +41,6 @@ on property:crypto.ready=0
     stop gatekeeper-1-0
     stop servicemanager
     stop sbin_qseecomd
-
-service ldconfigtxt /sbin/touch /etc/ld.config.txt
-    oneshot
-    seclabel u:r:recovery:s0
 
 service hwservicemanager /sbin/hwservicemanager
     user root
@@ -97,11 +89,4 @@ service keystore_auth /sbin/keystore_auth
     oneshot
     user system
     group root
-    seclabel u:r:recovery:s0
-
-service patchlevel /sbin/patchlevel.sh
-    user root
-    group root
-    disabled
-    oneshot
     seclabel u:r:recovery:s0
