@@ -56,9 +56,9 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
     libgptutils \
     libz
 
-# Time Zone data for recovery
-PRODUCT_COPY_FILES += \
-    system/timezone/output_data/iana/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
+# Timezone Data
+PRODUCT_PACKAGES += \
+    tzdata_twrp
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := omni_PL2
