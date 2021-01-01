@@ -56,6 +56,11 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
     libgptutils \
     libz
 
+# QCOM decryption
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
+
 # Timezone Data
 PRODUCT_PACKAGES += \
     tzdata_twrp
